@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { IntStateData } from "../../redux/sliceData";
+import { IntFilm } from "../../utils/types";
+import { DataDiv } from "./DataDiv/DataDiv";
 import {
     Data,
     Genres,
@@ -7,14 +8,17 @@ import {
     Poster,
     Img,
     Slogan,
-    Title,
-    Genre,
+    Name,
+    Italic,
     Year,
     Desc,
+    // Title,
+    // Val,
+    // Container,
 } from "./style/Card";
 
 interface TypeProps {
-    info: IntStateData;
+    info: IntFilm;
 }
 
 export const Card = (props: TypeProps) => {
@@ -66,28 +70,67 @@ export const Card = (props: TypeProps) => {
         completed,
     } = props.info;
 
+    const ARR_DATA = [
+        {
+            title: "Год выхода",
+            desc: year,
+        },
+        {
+            title: "Стран",
+            desc: countries,
+            titleVars: ["а", "ы"],
+        },
+        {
+            title: "Жанр",
+            desc: genres,
+            titleVars: ["", "ы"],
+        },
+        {
+            title: "Рейтинг",
+            desc: ratingKinopoisk,
+            // titleVars: ["","ы"],
+        },
+        {
+            title: "Рейтинг IMDb",
+            desc: ratingImdb,
+            // titleVars: ["","ы"],
+        },
+        {
+            title: "Возрастные ограничения",
+            // desc: "от "+ratingAgeLimits.slice(3)+" лет",
+            desc: ratingAgeLimits && ratingAgeLimits.slice(3) + "+",
+            // titleVars: ["","ы"],
+        },
+        {
+            title: "Длительность",
+            desc: `${filmLength} мин. (${(filmLength / 60).toFixed(0)}:${filmLength % 60})`,
+            // titleVars: ["","ы"],
+        },
+    ];
+
     return (
         <Div>
             <Poster>
                 <Img src={posterUrl} alt={nameRu} />
-                <Title>
+            </Poster>
+            <Data>
+                <Name>
                     <Link to={webUrl} target="_blank">
                         {nameRu}
                     </Link>
-                </Title>
+                </Name>
                 <Slogan>{slogan}</Slogan>
-            </Poster>
-            <Data>
-                <Year>Год выхода: {year}</Year>
-                <Genres>
-                    Жанр:{" "}
-                    {genres.map((val, idx) => (
-                        <Genre>
-                            {val.genre}
-                            {idx === genres.length - 1 ? "" : ", "}
-                        </Genre>
-                    ))}
-                </Genres>
+                {ARR_DATA.map(
+                    (val, idx) =>
+                        val.desc && (
+                            <DataDiv
+                                key={idx}
+                                title={val.title}
+                                data={val.desc}
+                                titleVars={val.titleVars}
+                            />
+                        ),
+                )}
                 <Desc>Описание: {description}</Desc>
             </Data>
         </Div>

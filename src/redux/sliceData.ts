@@ -1,82 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
+import { IntFilm, IntPremiers } from "../utils/types";
 
-interface IntCounties {
-    Items: {
-        country: string;
-    }[];
+interface IntStateData {
+    films: IntFilm[];
+    premiers: IntPremiers[];
 }
 
-interface IntGenre {
-    genre: string;
-}
-// interface IntGenres {
-//     IntGenre[];
-// }
-
-export interface IntStateData {
-    kinopoiskId: number;
-    kinopoiskHDId: string;
-    imdbId: string;
-    nameRu: string;
-    nameEn: string;
-    nameOriginal: string;
-    posterUrl: string;
-    posterUrlPreview: string;
-    coverUrl: string;
-    logoUrl: string;
-    reviewsCount: number;
-    ratingGoodReview: number;
-    ratingGoodReviewVoteCount: number;
-    ratingKinopoisk: number;
-    ratingKinopoiskVoteCount: number;
-    ratingImdb: number;
-    ratingImdbVoteCount: number;
-    ratingFilmCritics: number;
-    ratingFilmCriticsVoteCount: number;
-    ratingAwait: number;
-    ratingAwaitCount: number;
-    ratingRfCritics: number;
-    ratingRfCriticsVoteCount: number;
-    webUrl: string;
-    year: number;
-    filmLength: number;
-    slogan: string;
-    description: string;
-    shortDescription: string;
-    editorAnnotation: string;
-    isTicketsAvailable: boolean;
-    productionStatus: string;
-    type: string;
-    ratingMpaa: string;
-    ratingAgeLimits: string;
-    hasImax: boolean;
-    has3D: boolean;
-    lastSync: string;
-    countries: IntCounties;
-    genres: IntGenre[];
-    startYear: number;
-    endYear: number;
-    serial: boolean;
-    shortFilm: boolean;
-    completed: boolean;
-}
-
-const initialState: IntStateData[] = [];
+const initialState: IntStateData = {
+    films: [],
+    premiers: [],
+};
 
 const sliceData = createSlice({
     name: "data",
     initialState,
     reducers: {
-        ADD(state, action: PayloadAction<IntStateData>) {
-            return [...state, action.payload];
+        ADD_FILM(state, action: PayloadAction<IntFilm>) {
+            return { ...state, films: [...state.films, action.payload] };
         },
-        CLEAR() {
-            return initialState;
+        CLEAR_FILMS(state) {
+            return { ...state, films: [] };
         },
     },
 });
 
-export const { ADD, CLEAR } = sliceData.actions;
-
+export const { ADD_FILM, CLEAR_FILMS } = sliceData.actions;
 export default sliceData.reducer;

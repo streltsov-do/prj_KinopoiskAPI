@@ -9,12 +9,8 @@ export const Form = styled.form`
     border-style: solid;
     border-radius: 5px;
     border-width: 2px;
-`
+`;
 
-export const TextInput = styled.input`
-    
-`
+export const TextInput = styled.input``;
 
-export const Span = styled.span`
-    
-`
+export const Span = styled.span``;

@@ -5,7 +5,7 @@ export const Div = styled.div`
     gap: 20px;
     border: 2px solid #a52434;
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
 `;
 
 export const Poster = styled.div`
@@ -18,7 +18,7 @@ export const Img = styled.img`
     height: 400px;
     width: 250px;
 `;
-export const Title = styled.span`
+export const Name = styled.span`
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -36,16 +36,14 @@ export const Data = styled.div`
     gap: 5px;
 `;
 
-export const Year = styled.span`
+export const Year = styled.span``;
 
-`
+export const Genres = styled.div``;
 
-export const Genres = styled.span``;
-
-export const Genre = styled.span`
+export const Italic = styled.span`
     font-style: italic;
 `;
 
 export const Desc = styled.div`
     text-align: justify;
-`
+`;
