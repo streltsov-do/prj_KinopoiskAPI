@@ -52,13 +52,13 @@ export const Header = () => {
                         )
                     );
                 })}
-                {logged && <Button onClick={handleLogout}>Выйти</Button>}
-                {showModal &&
-                    createPortal(
-                        <ModalLogout close={handleCloseModal} />,
-                        document.body,
-                    )}
             </Nav>
+            {logged && <Button onClick={handleLogout}>Выйти</Button>}
+            {showModal &&
+                createPortal(
+                    <ModalLogout close={handleCloseModal} />,
+                    document.body,
+                )}
         </Div>
     );
 };

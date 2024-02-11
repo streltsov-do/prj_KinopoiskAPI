@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button/Button";
-import { LabeledInput } from "../../components/Input/LabeledInput";
+import { FormSimple } from "../../components/FormSimple/FormSimple";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { RootState } from "../../redux/reducers";
 import { LOGIN } from "../../redux/sliceAuth";
 import { CLEAR_FILMS } from "../../redux/sliceData";
-import { Desc, Div, ErrorDesc, Flex, FormReg, Title } from "./style/PageMain";
+import { Desc, Div } from "./style/PageMain";
 
 export const PageMain = () => {
     const [apiKey, setApiKey] = useState("");
@@ -20,14 +19,12 @@ export const PageMain = () => {
         auth && navigate("/info");
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
+    const handleChange = (val: string | number | readonly string[]) => {
         setError(false);
-        setApiKey(e.target.value);
+        setApiKey(val + "");
     };
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         if (!apiKey) {
             setError(true);
         } else {
@@ -42,28 +39,22 @@ export const PageMain = () => {
         <>
             {!auth ? (
                 <Div>
-                    <FormReg>
-                        <Title>Введите токен X_API_KEY*</Title>
-                        <LabeledInput
-                            label="Токен"
-                            type="text"
-                            value={apiKey}
-                            onChange={handleChange}
-                            $width={"350px"}
-                        />
-                        <Flex>
-                            <Button onClick={handleClick}>Войти</Button>
-                            {error && (
-                                <ErrorDesc>ERROR: Поле не заполнено!</ErrorDesc>
-                            )}
-                        </Flex>
-                        <Desc>
-                            * - доступен после регистрации на{" "}
-                            <Link to="https://kinopoiskapiunofficial.tech">
-                                Kinopoisk Unofficial API
-                            </Link>
-                        </Desc>
-                    </FormReg>
+                    <FormSimple
+                        title="Введите токен X_API_KEY*"
+                        data={apiKey}
+                        changeData={handleChange}
+                        inputText="Токен"
+                        inputWidth="350px"
+                        submitText="Войти"
+                        onSubmit={handleSubmit}
+                        errorMessage={error ? "Поле не заполнено" : ""}
+                    />
+                    <Desc>
+                        * - доступен после регистрации на{" "}
+                        <Link to="https://kinopoiskapiunofficial.tech">
+                            Kinopoisk Unofficial API
+                        </Link>
+                    </Desc>
                 </Div>
             ) : (
                 <></>

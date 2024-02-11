@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
 import { IntFilm } from "../../utils/types";
-import { DataDiv } from "./DataDiv/DataDiv";
+import { DataDiv } from "../DataDiv/DataDiv";
 import {
     Data,
-    Genres,
     Div,
     Poster,
     Img,
     Slogan,
     Name,
-    Italic,
-    Year,
     Desc,
-    // Title,
-    // Val,
-    // Container,
 } from "./style/Card";
 
 interface TypeProps {

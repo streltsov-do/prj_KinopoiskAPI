@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = (() => {
     const api_key = localStorage.getItem("auth");
-    console.log(api_key);
     return api_key || "";
 })();
 
@@ -14,7 +13,7 @@ const sliceAuth = createSlice({
             return (state = action.payload);
         },
         LOGOUT(state) {
-            localStorage.removeItem("api_key");
+            localStorage.removeItem("auth");
             return (state = "");
         },
     },

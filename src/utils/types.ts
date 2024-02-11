@@ -79,7 +79,26 @@ export interface IntPremier {
     premiereRu: string;
 }
 
-export interface IntPremiers {
+export interface IntPremieres {
     total: number;
-    items: IntPremier;
+    items: IntPremier[];
 }
+
+export const PremieresInit: IntPremieres = {
+    total: 0,
+    items: [],
+};
+
+export type TypeMonth =
+    | "JANUARY"
+    | "FEBRUARY"
+    | "MARCH"
+    | "APRIL"
+    | "MAY"
+    | "JUNE"
+    | "JULE"
+    | "AUGUST"
+    | "SEPTEMBER"
+    | "OCTOBER"
+    | "NOVEMBER"
+    | "DECEMBER";

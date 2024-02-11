@@ -1,16 +1,16 @@
-import { IntCountry, IntGenre, isGenre } from "../../../utils/types";
+import { IntCountry, IntGenre, isGenre } from "../../utils/types";
 import { Div, Title, Desc } from "./style/DataDiv";
 
 interface TypeProps {
     title: string;
     data: string | number | IntCountry[] | IntGenre[];
     titleVars?: string[];
+    mini?: boolean;
 }
 
 export const DataDiv = (props: TypeProps) => {
-    const { title, data, titleVars } = props;
+    const { title, data, titleVars, mini } = props;
 
-    console.log(title, data);
     const titleFinal = (function getTitle() {
         if (Array.isArray(data) && titleVars) {
             if (data.length > 1) {
@@ -42,9 +42,9 @@ export const DataDiv = (props: TypeProps) => {
     })();
 
     return (
-        <Div>
-            <Title>{titleFinal}</Title>
-            <Desc>{desc}</Desc>
+        <Div mini={mini}>
+            <Title mini={mini}>{titleFinal}</Title>
+            <Desc mini={mini}>{desc}</Desc>
         </Div>
     );
 };

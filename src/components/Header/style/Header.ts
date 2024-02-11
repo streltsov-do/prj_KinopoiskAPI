@@ -20,7 +20,7 @@ export const Title = styled.div`
 
 export const Nav = styled.ul`
     display: flex;
-    gap: 10px;
+    gap: 30px;
     list-style: none;
     padding: 0;
     align-items: center;

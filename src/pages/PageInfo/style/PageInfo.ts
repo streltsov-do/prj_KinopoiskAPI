@@ -11,3 +11,8 @@ export const Cards = styled.div`
     flex-direction: column;
     gap: 20px;
 `;
+
+export const Error = styled.h4`
+    color: red;
+    margin: 50px;
+`;
