@@ -24,6 +24,7 @@ export const Nav = styled.ul`
     list-style: none;
     padding: 0;
     align-items: center;
+    margin-right: 20px;
 `;
 
 export const Li = styled.li`

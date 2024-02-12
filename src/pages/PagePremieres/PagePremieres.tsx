@@ -159,13 +159,15 @@ export const PagePremieres = () => {
                     />,
                     document.body,
                 )}
-            <SliderDiv>
-                <Slider {...settings}>
-                    {premieres.items.map((val, idx) => {
-                        return <CardPremier key={idx} info={val} />;
-                    })}
-                </Slider>
-            </SliderDiv>
+            {premieres.items.length > 0 && (
+                <SliderDiv items={displayNum}>
+                    <Slider {...settings}>
+                        {premieres.items.map((val, idx) => {
+                            return <CardPremier key={idx} info={val} />;
+                        })}
+                    </Slider>
+                </SliderDiv>
+            )}
         </Div>
     );
 };

@@ -51,7 +51,7 @@ export const PageMain = () => {
                     />
                     <Desc>
                         * - доступен после регистрации на{" "}
-                        <Link to="https://kinopoiskapiunofficial.tech">
+                        <Link to="https://kinopoiskapiunofficial.tech" target="_blank">
                             Kinopoisk Unofficial API
                         </Link>
                     </Desc>

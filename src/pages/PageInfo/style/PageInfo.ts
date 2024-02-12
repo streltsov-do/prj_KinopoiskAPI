@@ -1,14 +1,14 @@
 import styled from "styled-components/macro";
 
 export const Div = styled.div`
-    padding: 20px;
+    /* padding: 20px; */
 `;
 
 export const Cards = styled.div`
     /* padding: 30px; */
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 20px;
 `;
 

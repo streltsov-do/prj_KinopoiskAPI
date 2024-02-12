@@ -7,10 +7,16 @@ export const Div = styled.div`
     position: relative;
 `;
 
-export const SliderDiv = styled.div`
+const PADDING_SLIDER = 5;
+
+export const SliderDiv = styled.div<{
+    items: number;
+}>`
+    width: ${(props) => 380 * props.items + 2 * PADDING_SLIDER}px;
     > .slick-slider {
-        padding: 5px;
+        padding: ${PADDING_SLIDER}px;
         background-color: lightgreen;
+
         > .slick-slide {
             width: max-content;
             height: 220px;

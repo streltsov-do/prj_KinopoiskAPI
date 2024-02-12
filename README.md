@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# Сайт по Kinopoisk Unofficial API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Для запуска приложения необходимо: 
+  - склонировать репозиторий
+  - перейти в корневую папку репозитория
+  - ввести в терминале "yarn install", дождаться установки пакетов
+  - ввести "yarn start"
+- Для запуски через Docker:
+  - склонировать репозиторий
+  - перейти в корневую папку репозитория
+  - ввести в терминале "docker build -t vne-server ." (где "vne-server" - название образа)
+  - в Docker Dekstop запустить контейнер для данного образа
 
-## Available Scripts
+------
 
-In the project directory, you can run:
+1. Для начала работы необходимо ввести токен, который можно получить после регистрации на [kinopoiskapiunofficial]().
 
-### `npm start`
+   ![readme_0](./readme/readme_0.jpg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. После входа будет осуществлён переход на страницу информации по фильму, доступной по Kinopoisk ID.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   ![readme_1](./readme/readme_1.jpg)
 
-### `npm test`
+3. Пример карточки фильма:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ​	![readme_2](./readme/readme_2.jpg)
 
-### `npm run build`
+4. При следующем запросе - новые карточки фильмов будут отображаться в начале страницы:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ![readme_3](./readme/readme_3.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. При некорректном токене - будет выводиться соответствующая ошибка:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ![readme_4](./readme/readme_4.jpg)
 
-### `npm run eject`
+6. Пример вывода ошибки, неуказанной в документации на сайте:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ![readme_5](./readme/readme_5.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7. После переходе на страницу премьер необходимо выбрать период премьер - год и месяц:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ![readme_6](./readme/readme_6.jpg)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+8. Вывод премьер осуществляется в слайдер:
 
-## Learn More
+   ![readme_7](.\readme\readme_7.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+9. При увеличении области просмотра - будет увеличиватсья количество выводимых элементов в слайдере:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ![readme_7](.\readme\readme_8.jpg)
+   
+10. Можно изменить используемый токен, нажав на кнопку "выйти" - появится модальное окно в середине видимой области:
+
+    ![readme_7](.\readme\readme_9.jpg)
+
+11. Если ввести некорректный токен и попробовать осуществить запрос - также будет выводиться модальное окно с соответствующим сообщением:
+
+    ![readme_7](.\readme\readme_10.jpg)
+
+    ![readme_7](.\readme\readme_11.jpg)
+
