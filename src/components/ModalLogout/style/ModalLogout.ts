@@ -13,6 +13,15 @@ export const Div = styled.div`
     z-index: 10;
 `;
 
+export const Span=styled.span<{error?: boolean}>`
+    color: ${(props) => props.error?"red":"black"}
+`
+
+export const DivExit = styled.div`
+    margin-top: 20px;
+    text-align: center;
+`
+
 export const Modal = styled.div`
     padding: 20px;
     background-color: beige;
@@ -22,5 +31,6 @@ export const Modal = styled.div`
 export const Flex = styled.div`
     margin-top: 20px;
     display: flex;
+    justify-content: center;
     gap: 10px;
 `;

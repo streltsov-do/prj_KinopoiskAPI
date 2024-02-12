@@ -10,7 +10,7 @@ export const DivArrow = styled.div`
     position: relative;
 `;
 
-const WIDTH = 140;
+const WIDTH = 125;
 const HEIGHT = 25;
 
 export const DivDrop = styled.div<{
@@ -23,7 +23,7 @@ export const DivDrop = styled.div<{
     overflow-y: hidden;
     height: ${(prop) => prop.items * HEIGHT}px;
     top: ${HEIGHT}px;
-    background-color: #ffffff;
+    background-color: transparent;
     z-index: 20;
 `;
 
@@ -41,7 +41,6 @@ export const DivDropItem = styled.div<{
 export const Btn = styled.button`
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: ${WIDTH}px;
     height: ${HEIGHT}px;

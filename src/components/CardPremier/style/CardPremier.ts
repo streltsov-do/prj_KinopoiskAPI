@@ -22,5 +22,5 @@ export const Data = styled.div`
 export const Title = styled.span`
     font-weight: bold;
     text-align: center;
-    font-size: 20px;
+    font-size: 17px;
 `;

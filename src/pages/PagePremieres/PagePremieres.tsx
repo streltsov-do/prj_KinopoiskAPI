@@ -11,9 +11,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { DropDown } from "../../components/DropDown/DropDown";
 import { ARR_MONTH, ARR_MONTH_RU } from "../../utils/constants";
+import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
+import { createPortal } from "react-dom";
 
-const CARD_WIDTH = 380;
-const PARENT_P_LEFT = 20;
+const WIDTH_CARD = 380;
+const PADDING_LEFT = 20;
+const WIDTH_LABEL = "50px";
 
 export const PagePremieres = () => {
     const [year, setYear] = useState(2024);
@@ -21,6 +24,7 @@ export const PagePremieres = () => {
     const [premieres, setPremieres] = useState<IntPremieres>(PremieresInit);
     const [displayNum, setDisplayNum] = useState(1);
     const [error, setError] = useState("");
+    const [showModal, setShowModal] = useState(false);
 
     const dispatch = useAppDispatch();
     const X_API_KEY = useAppSelector((state: RootState) => state.auth);
@@ -62,7 +66,8 @@ export const PagePremieres = () => {
                     let errorMessage = "";
                     switch (response.status) {
                         case 401:
-                            errorMessage = "Пустой или неправильный токен";
+                            // errorMessage = "Пустой или неправильный токен";
+                            setShowModal(true);
                             break;
                         case 402:
                             errorMessage =
@@ -76,15 +81,17 @@ export const PagePremieres = () => {
                             errorMessage = data.message;
                             break;
                     }
-                    setError(errorMessage);
+                    if (response.status !== 401) {
+                        setError(errorMessage);
+                    }
                 }
             });
         });
     };
 
     const handeResize = useCallback(() => {
-        const widthCardDivMax = window.innerWidth - PARENT_P_LEFT * 2;
-        let newDisplayNum = Math.floor(widthCardDivMax / CARD_WIDTH);
+        const widthCardDivMax = window.innerWidth - PADDING_LEFT * 2;
+        let newDisplayNum = Math.floor(widthCardDivMax / WIDTH_CARD);
         newDisplayNum = newDisplayNum > 8 ? 8 : newDisplayNum;
 
         if (newDisplayNum !== displayNum && newDisplayNum > 0) {
@@ -105,6 +112,10 @@ export const PagePremieres = () => {
         setMonth(val);
     };
 
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
     const settings = {
         dots: false,
         infinite: true,
@@ -122,12 +133,15 @@ export const PagePremieres = () => {
                 title="Премьеры за"
                 data={year}
                 changeData={handleChange}
-                inputText="Год премьер:"
+                inputText="Год"
+                inputType="number"
+                inputWidth="125px"
+                inputWidthLabel={WIDTH_LABEL}
                 submitText="Показать"
                 onSubmit={handleRequest}
                 extInputs={
                     <Flex>
-                        <Title>Месяц:</Title>
+                        <Title $width={WIDTH_LABEL}>Месяц</Title>
                         <DropDown
                             items={ARR_MONTH_RU}
                             val={month}
@@ -137,6 +151,14 @@ export const PagePremieres = () => {
                 }
             />
             {error && <Error>Error: {error}</Error>}
+            {showModal &&
+                createPortal(
+                    <ModalLogout
+                        close={handleCloseModal}
+                        title="Пустой или неправильный токен"
+                    />,
+                    document.body,
+                )}
             <SliderDiv>
                 <Slider {...settings}>
                     {premieres.items.map((val, idx) => {

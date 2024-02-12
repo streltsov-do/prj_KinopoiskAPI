@@ -39,8 +39,12 @@ export const SliderDiv = styled.div`
 export const Error = styled.h4`
     color: red;
 `;
+
 export const Flex = styled.div`
     display: flex;
     gap: 10px;
 `;
-export const Title = styled.div``;
+
+export const Title = styled.div<{ $width: string }>`
+    width: ${(props) => props.$width || "auto"};
+`;

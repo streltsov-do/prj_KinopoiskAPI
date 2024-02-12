@@ -2,14 +2,15 @@ import { useNavigate } from "react-router";
 import { useAppDispatch } from "../../redux/hooks";
 import { LOGOUT } from "../../redux/sliceAuth";
 import { Button } from "../Button/Button";
-import { Div, Flex, Modal } from "./style/ModalLogout";
+import { Div, DivExit, Flex, Modal, Span } from "./style/ModalLogout";
 
 interface TypeProps {
     close: () => void;
+    title?: string;
 }
 
 export const ModalLogout = (props: TypeProps) => {
-    const { close } = props;
+    const { close, title } = props;
 
     const dispatch = useAppDispatch();
 
@@ -30,7 +31,8 @@ export const ModalLogout = (props: TypeProps) => {
     return (
         <Div>
             <Modal>
-                <span>Вы точно хотите выйти?</span>
+                <Span error={Boolean(title)}>{title || "Вы точно хотите выйти?"}</Span>
+                <DivExit>{title && "Выйти?"}</DivExit>
                 <Flex>
                     <Button onClick={handleNo}>Нет</Button>
                     <Button onClick={handleYes}>Да</Button>

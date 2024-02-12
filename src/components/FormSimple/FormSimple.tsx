@@ -7,7 +7,9 @@ interface TypeProps {
     data: string | number | readonly string[];
     changeData: (val: string | number | readonly string[]) => void;
     inputText?: string;
+    inputWidthLabel?: string;
     inputWidth?: string;
+    inputType?: string;
     submitText: string;
     onSubmit: () => void;
     cancelEn?: boolean;
@@ -23,7 +25,9 @@ export const FormSimple = (props: TypeProps) => {
         data,
         changeData,
         inputText,
+        inputWidthLabel,
         inputWidth,
+        inputType,
         onSubmit,
         submitText,
         cancelEn,
@@ -50,13 +54,13 @@ export const FormSimple = (props: TypeProps) => {
     return (
         <Form name="FormSimple">
             <Span>{title}</Span>
-            {/* { || ( */}
             <LabeledInput
                 label={inputText || ""}
-                type="text"
+                type={inputType || "text"}
                 value={data}
                 onChange={handleInput}
-                $width={inputWidth}
+                widthLabel={inputWidthLabel}
+                widthInput={inputWidth}
             />
             {extInputs}
             <Flex>
