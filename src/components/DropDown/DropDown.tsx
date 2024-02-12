@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { TypeMonth } from "../../utils/types";
 import { ArrowDown } from "../ArrowDown/ArrowDown";
 import { Btn, Div, DivArrow, DivDrop, DivDropItem } from "./style/DropDown";
 
@@ -21,7 +20,6 @@ export const DropDown = (props: {
     function handleChoose(idx: number) {
         setShowDrops(false);
         setVal(idx);
-        // setTone(idx);
     }
 
     return (

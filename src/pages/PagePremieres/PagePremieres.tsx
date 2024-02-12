@@ -40,6 +40,7 @@ export const PagePremieres = () => {
     };
 
     const handleRequest = () => {
+        setError("");
         fetch(
             `https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year}&month=${ARR_MONTH[month]}`,
             {
@@ -99,6 +100,11 @@ export const PagePremieres = () => {
         };
     }, [handeResize]);
 
+    const handleMonth = (val: number) => {
+        setError("");
+        setMonth(val);
+    };
+
     const settings = {
         dots: false,
         infinite: true,
@@ -125,7 +131,7 @@ export const PagePremieres = () => {
                         <DropDown
                             items={ARR_MONTH_RU}
                             val={month}
-                            setVal={setMonth}
+                            setVal={handleMonth}
                         />
                     </Flex>
                 }

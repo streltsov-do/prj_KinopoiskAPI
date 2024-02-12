@@ -96,7 +96,7 @@ export type TypeMonth =
     | "APRIL"
     | "MAY"
     | "JUNE"
-    | "JULE"
+    | "JULY"
     | "AUGUST"
     | "SEPTEMBER"
     | "OCTOBER"

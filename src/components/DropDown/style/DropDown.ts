@@ -22,6 +22,7 @@ export const DivDrop = styled.div<{
     width: ${WIDTH}px;
     overflow-y: hidden;
     height: ${(prop) => prop.items * HEIGHT}px;
+    top: ${HEIGHT}px;
     background-color: #ffffff;
     z-index: 20;
 `;

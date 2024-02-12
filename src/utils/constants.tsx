@@ -37,7 +37,7 @@ export const ARR_MONTH: TypeMonth[] = [
     "APRIL",
     "MAY",
     "JUNE",
-    "JULE",
+    "JULY",
     "AUGUST",
     "SEPTEMBER",
     "OCTOBER",

@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom";
 import { IntFilm } from "../../utils/types";
 import { DataDiv } from "../DataDiv/DataDiv";
-import {
-    Data,
-    Div,
-    Poster,
-    Img,
-    Slogan,
-    Name,
-    Desc,
-} from "./style/Card";
+import { Data, Div, Poster, Img, Slogan, Name, Desc } from "./style/Card";
 
 interface TypeProps {
     info: IntFilm;
